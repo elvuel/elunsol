@@ -1,0 +1,28 @@
+Elunsol
+=======
+Chinese Lunisolar conversion.阴阳历互转。
+
+Example
+=======
+
+===阳历转阴历
+== solar date range
+[RUBY_VERSION =~ /1.8/  => 1901-12-15 ~ 2038-1-19 | RUBY_VERSION =~ /1.9/  => 1901-12-14 ~ 2038-1-19]
+
+Elunsol.solar_to_lunar(Time.mktime(1980, 6, 20), :short) => "1980年5月8号"
+Elunsol.solar_to_lunar(Time.mktime(1980, 6, 20), :chin) => "农历 一九八零年五月初八"
+Elunsol.solar_to_lunar(Time.mktime(2027, 5, 16), :short) => "2027年4月11号"
+Elunsol.solar_to_lunar(Time.mktime(2027, 5, 16), :chin) => "农历 二零二七年四月十一"
+
+===阴历转阳历
+== lunar day range
+[1902-1-1 ~ 2037-12-15]
+
+Elunsol.lunar_to_solar(Time.mktime(2004, 2, 2)).collect{ |time| time.strftime("%Y-%m-%d") } =>  ["2004-02-21", "2004-03-22"]
+Elunsol.lunar_to_solar(Time.mktime(1980, 5, 8)).collect{ |time| time.strftime("%Y-%m-%d") } => ["1980-06-20"]
+
+Test
+=======
+spec test/elunsol_test.rb
+
+Copyright (c) 2010 elvuel(http://elvuel.com), released under the MIT license
